@@ -1,0 +1,287 @@
+<%- contentFor('HeaderCss') %>
+  <!-- Add PristineJS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/pristinejs@1.0.0/dist/pristine.min.css" rel="stylesheet" type="text/css">
+
+  <%- contentFor('breadcrumb') %>
+
+    <!-- Breadcrumb -->
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+          <h4 class="mb-sm-0 font-size-18">Clan Details</h4>
+
+          <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+              <li class="breadcrumb-item active">Clan Details</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- contentFor('body') %>
+
+      <!-- Start Here Add Validation -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-4">Clan Details</h4>
+
+              <form id="clanForm" data-pristine-validate>
+
+                <div class="mb-3">
+                  <label class="form-label">Clan Name (Ekika)</label>
+                  <input type="text" class="form-control" name="clanName" data-pristine-required
+                    data-pristine-maxlength="50" placeholder="Enter clan name">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Clan Totem (Ow'Akasolya)</label>
+                  <input type="text" class="form-control" name="clanTotem" data-pristine-required
+                    data-pristine-maxlength="50" placeholder="Enter clan totem">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Clan Seat (Obutaka)</label>
+                  <input type="text" class="form-control" name="clanSeat" data-pristine-required
+                    data-pristine-maxlength="50" placeholder="Enter clan seat">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Clan Motto (Emibala)</label>
+                  <input type="text" class="form-control" name="clanMotto" data-pristine-required
+                    data-pristine-maxlength="100" placeholder="Enter clan motto">
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-6">
+            
+                    <h2>Clan Head</h2>
+            
+                    <div class="form-group">
+                      <label>Name:</label>
+                      <input type="text" class="form-control" name="people[0].name">
+                    </div>
+            
+                    <div class="form-group">
+                      <label>Gender:</label>
+                      <select class="form-control" name="people[0].gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+            
+                    <div class="form-group">
+                      <label>Birth Date:</label>
+                      <input type="date" class="form-control" name="people[0].birthDate"> 
+                    </div>
+            
+                    <div class="form-group">
+                      <label>Birth Place:</label>
+                      <input type="text" class="form-control" name="people[0].birthPlace">
+                    </div>
+            
+                    <div class="form-group">
+                      <label>Death Date:</label>
+                      <input type="date" class="form-control" name="people[0].deathDate">
+                    </div>
+            
+                    <div class="form-group">
+                      <label>Death Place:</label>
+                      <input type="text" class="form-control" name="people[0].deathPlace">
+                    </div>
+            
+                    <div class="form-group">
+                      <label>Spouse:</label>
+                      <input type="text" class="form-control" name="people[0].spouse"> 
+                    </div>
+            
+                  </div>
+            
+                  <div class="col-md-6">
+            
+                    <h2>Parents</h2>
+            
+                    <% for(let i=0; i<2; i++) { %>
+            
+                      <h3>Parent <%= i+1 %></h3>
+            
+                      <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" name="people[0].parents.<%= i %>.name">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Gender:</label>
+                        <select class="form-control" name="people[0].parents.<%= i %>.gender">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Birth Date:</label>
+                        <input type="date" class="form-control" name="people[0].parents.<%= i %>.birthDate">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Birth Place:</label>
+                        <input type="text" class="form-control" name="people[0].parents.<%= i %>.birthPlace">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Death Date:</label>
+                        <input type="date" class="form-control" name="people[0].parents.<%= i %>.deathDate">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Death Place:</label>
+                        <input type="text" class="form-control" name="people[0].parents.<%= i %>.deathPlace">
+                      </div>
+            
+                    <% } %>
+            
+                  </div>
+                </div>
+            
+                <div class="row">
+                  <div class="col-md-12">
+            
+                    <h2>Grandparents</h2>
+            
+                    <% for(let i=0; i<4; i++) { %>
+            
+                      <h3>Grandparent <%= i+1 %></h3>
+            
+                      <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" name="people[0].grandparents.<%= i %>.grandparent.name">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Gender:</label>
+                        <select class="form-control" name="people[0].grandparents.<%= i %>.grandparent.gender">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Birth Date:</label>
+                        <input type="date" class="form-control" name="people[0].grandparents.<%= i %>.grandparent.birthDate">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Birth Place:</label>
+                        <input type="text" class="form-control" name="people[0].grandparents.<%= i %>.grandparent.birthPlace">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Death Date:</label>
+                        <input type="date" class="form-control" name="people[0].grandparents.<%= i %>.grandparent.deathDate">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Death Place:</label>
+                        <input type="text" class="form-control" name="people[0].grandparents.<%= i %>.grandparent.deathPlace">
+                      </div>
+            
+                      <div class="form-group">
+                        <label>Side:</label>
+                        <select class="form-control" name="people[0].grandparents.<%= i %>.side">
+                          <option value="maternal">Maternal</option>
+                          <option value="paternal">Paternal</option>
+                        </select>
+                      </div>
+            
+                    <% } %>
+            
+                  </div>
+                </div>
+            
+                <% let generationCount = 3 %>
+            
+                <% for(let i=generationCount; i<10; i++) { %>
+            
+                  <div class="row">
+                    <div class="col-md-12">
+                    
+                      <h2>Generation <%= i %></h2>
+            
+                      <% for(let j=0; j<Math.pow(2,i); j++) { %>
+            
+                        <div class="form-group">
+                          <label>Name:</label>
+                          <input type="text" class="form-control" name="people[0].generation<%= i %>.<%= j %>.name">
+                        </div>
+            
+                        <div class="form-group">
+                          <label>Gender:</label>
+                          <select class="form-control" name="people[0].generation<%= i %>.<%= j %>.gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                        </div>
+            
+                        <div class="form-group">
+                          <label>Birth Date:</label>
+                          <input type="date" class="form-control" name="people[0].generation<%= i %>.<%= j %>.birthDate">
+                        </div>
+            
+                        <div class="form-group">
+                          <label>Birth Place:</label>
+                          <input type="text" class="form-control" name="people[0].generation<%= i %>.<%= j %>.birthPlace">
+                        </div>
+            
+                        <div class="form-group">
+                          <label>Death Date:</label>
+                          <input type="date" class="form-control" name="people[0].generation<%= i %>.<%= j %>.deathDate">
+                        </div>
+            
+                        <div class="form-group">
+                          <label>Death Place:</label>
+                          <input type="text" class="form-control" name="people[0].generation<%= i %>.<%= j %>.deathPlace">
+                        </div>
+            
+                      <% } %>
+            
+                    </div>
+                  </div>
+            
+                <% } %>
+            
+                <div class="row">
+                  <div class="col-md-12">
+                    <button type="button" class="btn btn-secondary" onclick="addGeneration()">
+                      Add Generation
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="removeGeneration()">
+                      Remove Generation
+                    </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+
+                <!-- Submit -->
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Here Add Validation -->
+
+      <%- contentFor('FooterJs') %>
+
+        <!-- Add PristineJS -->
+        <script src="https://cdn.jsdelivr.net/npm/pristinejs@1.0.0/dist/pristine.min.js"></script>
+
+        <script>
+         
+        </script>
+
+        <%- contentFor('BottomJs') %>
